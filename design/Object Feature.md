@@ -1,0 +1,36 @@
+A feature can:
+- Name
+- Grant modifiers
+	- Advantage or disadvantage on any d20 roll type
+	- Proficiency, half proficiency (round up or down), or expertise in anything that can have a proficiency bonus
+	- Grant, set, reduce or remove movement types
+	- Set carrying capacity size-equivalent
+	- Add damage buff or change damage type? (used for magic items)
+	- Resistance, immunity, or weakness
+	- Grant flat or dice-based bonus to any numerical value, including stacking ability score bonus
+	- Set AC, attunement slots, AC dex mod (cap), ability score, # of extra attacks, base AC, unarmored AC, unarmed damage die
+	- Grant proficiency in armor, weapon, tool, language
+	- Bonus to any numerical value that scales with class/character level
+	- Grant temporary, swappable proficiency
+	- Increase or set an ability score (which can "stack")
+- Grant a feat
+- Grant a sense
+- Set size
+- Grant a natural weapon
+- Grant a weapon attack
+- Grant access to a creature
+- Grant special boosts (eg warlock invocation bonuses to *eldritch blast*)
+- Increase spell range or damage
+- Remove restrictions (dual wield, armor speed reduction, AC dex bonuses)
+- Ignore a weapon property
+- Grant access to a spell (fixed or chosen), with fixed or chosen spellcasting ability, with or without set # of uses, etc
+- Grant any kind of activated ability
+- Grant access to a class/subclass feature (eg sorcery points, battlemaster maneuvers, warlock invocations)
+- Prohibit wearing armor
+- Change weapon reach
+- Add damage die to critical hits
+- Replace unarmed strike die
+- Text feature description
+- ???
+- #### Option
+	- have an option to select from multiple different things an object feature can have

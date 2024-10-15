@@ -1,0 +1,50 @@
+A character has:
+- Ability scores
+- Species
+	- **Optional** Subrace
+	- Choices of ability score increases
+	- List of features, including any limited use resources and choices made
+- List of classes and levels in each
+	- List of features, including any limited use resources and choices made
+	- Spell slots
+	- Spells prepared
+	- Spells known
+	- ???
+- Proficiencies
+	- Saving Throws
+	- Skills
+	- Armor
+	- Weapons
+	- Tools
+	- Languages
+- Resistances, vulnerabilities, and immunities
+- Current conditions
+- Speeds
+- Background
+- Inventory
+	- List of containers and the gear within each
+	- Money
+	- Equipped items
+	- Attuned items
+- Feats
+- Inspiration
+- Current HP
+- Max HP
+- Hit Dice
+- Size
+- Proficiency Bonus
+- Optional Texts
+	- Custom inventory list (not custom items)
+	- Gender, eye color, height, hair color, faith, alignment, lifestyle, skin color, weight, age
+	- Personality traits, bonds, ideals, flaws
+	- Extra notes
+- Associated creatures
+
+A character has derived values for:
+- Ability Modifiers
+- Skills
+- Saving Throws
+- Passives
+- Initiative
+- Armor Class
+- Encumbrance
