@@ -1,11 +1,38 @@
-use std::ops::{Add, Sub};
+use serde::{self, Deserialize, Serialize};
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
-pub struct Skill {
-    name: String,
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+pub enum Skill<'a> {
+    Acrobatics, 
+    AnimalHandling, 
+    Arcana, 
+    Athletics,
+    Deception,
+    History,
+    Insight,
+    Intimidation,
+    Investigation,
+    Medicine,
+    Nature,
+    Perception,
+    Performance,
+    Persuasion,
+    Religion,
+    SleightOfHand,
+    Stealth,
+    Survival,
+    Custom(&'a str),
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+pub struct Speeds {
+    walk: u32,
+    swim: u32,
+    climb: u32,
+    fly: u32,
+    burrow: u32,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub enum AttackType {
     MeleeWeapon,
     RangedWeapon,
@@ -13,7 +40,20 @@ pub enum AttackType {
     RangedSpell,
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+pub enum Alignment {
+    LawfulGood,
+    LawfulNeutral,
+    LawfulEvil,
+    NeutralGood,
+    TrueNeutral,
+    NeutralEvil,
+    ChaoticGood,
+    ChaoticNeutral,
+    ChaoticEvil,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub enum Stat {
     Strength,
     Dexterity,
@@ -23,7 +63,107 @@ pub enum Stat {
     Charisma,
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+pub struct AbilityScores {
+    strength: u8,
+    dexterity: u8,
+    constitution: u8,
+    intelligence: u8,
+    wisdom: u8,
+    charisma: u8,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+pub enum Sense<'a> {
+    Blindsight(u32),
+    Darkvision(u32),
+    Tremorsense(u32),
+    Truesight(u32),
+    Custom{ name: &'a str, distance: u32 },
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+pub enum DamageTypes {
+    Acid,
+    Bludgeoning,
+    Cold,
+    Fire,
+    Force,
+    Lightning,
+    Necrotic,
+    Piercing,
+    Poison,
+    Psychic,
+    Radiant,
+    Slashing,
+    Thunder,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+pub enum Condition<'a> {
+    Blinded,
+    Charmed,
+    Deafened,
+    Exhaustion(u8),
+    Frightened,
+    Grappled,
+    Incapacitated,
+    Invisible,
+    Paralyzed,
+    Petrified,
+    Poisoned,
+    Prone,
+    Restrained,
+    Stunned,
+    Unconscious,
+    Custom(&'a str),
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+// There are some "Partnered Content" resistances/immunities that don't appear
+// here. I'm not dealing with them specifically.
+pub enum DamageResistImmune<'a> {
+    Acid,
+    Bludgeoning,
+    Cold,
+    Fire,
+    Force,
+    Lightning,
+    Necrotic,
+    Piercing,
+    Poison,
+    Psychic,
+    Radiant,
+    Slashing,
+    Thunder,
+    MetalWeaponBPS,
+    NonMagicalBPS,
+    NonMagicalBPSAtk,
+    NonMagicalUnsilveredBPSAtk,
+    NonMagicalNonAdamantineBPSAtk,
+    NonMagicalUnsilveredNonAdamantineBPSAtk,
+    Custom(&'a str),
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+pub enum CreatureType<'a> {
+    Abberation,
+    Beast,
+    Celestial,
+    Construct,
+    Dragon,
+    Elemental,
+    Fey,
+    Fiend,
+    Giant,
+    Humanoid,
+    Monstrosity,
+    Ooze,
+    Undead,
+    Custom(&'a str),
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub enum ActivationTime {
     Action,
     BonusAction,
@@ -35,7 +175,7 @@ pub enum ActivationTime {
     Day,
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub enum EffectDuration {
     Instant,
     Rounds(u32),
@@ -47,7 +187,7 @@ pub enum EffectDuration {
     Special,
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub enum EffectShape {
     Square,
     Cube,
@@ -57,7 +197,7 @@ pub enum EffectShape {
     Line,
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub enum EffectRange {
     Myself,
     Touch,
@@ -65,16 +205,17 @@ pub enum EffectRange {
     Miles(u32),
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
-pub struct Money {
-    platinum: i32,
-    gold: i32,
-    electrum: i32,
-    silver: i32,
-    copper: i32,
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+pub enum CreatureSize {
+    Tiny,
+    Small,
+    Medium,
+    Large,
+    Huge,
+    Gargantuan,
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub struct AreaOfEffect {
     size: u32,
     shape: EffectShape,
@@ -91,110 +232,5 @@ impl AreaOfEffect {
 
     pub fn shape(self) -> EffectShape {
         self.shape
-    }
-}
-
-impl Skill {
-    pub fn new(name: &str) -> Skill {
-        Skill { name: name.to_owned() }
-    }
-
-    pub fn get_name(&self) -> &str {
-        &self.name
-    }
-}
-
-impl Money {
-    const COPPER_PER_SILVER: i32 = 10;
-    const SILVER_PER_GOLD: i32 = 10;
-    const ELECTRUM_PER_GOLD: i32 = 2;
-    const GOLD_PER_PLATINUM: i32 = 10;
-    const SILVER_PER_ELECTRUM: i32 = 5;
-    
-    pub fn new(pp: i32, gp: i32, ep: i32, sp: i32, cp: i32) -> Money {
-        Money { platinum: pp, gold: gp, electrum: ep, silver: sp, copper: cp }
-    }
-
-    pub fn simplify(&mut self) -> () {
-        if  self.copper.abs() > Self::COPPER_PER_SILVER {
-            self.silver += self.copper / Self::COPPER_PER_SILVER;
-            self.copper = self.copper % Self::COPPER_PER_SILVER;
-        }
-        if self.silver.abs() > Self::SILVER_PER_GOLD {
-            self.gold += self.silver / Self::SILVER_PER_GOLD;
-            self.silver = self.silver % Self::SILVER_PER_GOLD;
-        }
-        if self.electrum.abs() > Self::ELECTRUM_PER_GOLD {
-            self.gold += self.electrum / Self::ELECTRUM_PER_GOLD;
-            self.electrum = self.electrum % Self::ELECTRUM_PER_GOLD;
-        }
-        self.gold += self.platinum * Self::GOLD_PER_PLATINUM;
-        self.platinum = 0;
-    }
-}
-
-impl Sub for Money {
-    type Output = Money;
-
-    fn sub(self, amt: Self) -> Self::Output {
-        let mut new = Money {
-            platinum: self.platinum - amt.platinum,
-            gold: self.gold - amt.gold,
-            electrum: self.electrum - amt.electrum,
-            silver: self.silver - amt.silver,
-            copper: self.copper - amt.copper,
-        };
-        if new.platinum < 0 {
-            new.gold -= new.platinum * Self::GOLD_PER_PLATINUM;
-            new.platinum = 0;
-        }
-        if new.gold < 0 {
-            new.silver -= new.gold * Self::SILVER_PER_GOLD;
-            new.gold = 0;
-        }
-        if new.electrum < 0 {
-            new.silver -= new.electrum * Self::SILVER_PER_ELECTRUM;
-            new.electrum = 0;
-        }
-        if new.silver < 0 {
-            // Since both negative gold and negative electrum can subtract from
-            // silver, we need to account for the possibility of negative
-            // electrum pushing silver negative while still having positive 
-            // gold. In that case we want to reduce gold first, without making 
-            // gold negative.
-            let mut gold_needed = new.silver.abs() / Self::SILVER_PER_GOLD;
-            if gold_needed * Self::SILVER_PER_GOLD < new.silver.abs() {
-                gold_needed += 1;
-            }
-            if new.gold >= gold_needed {
-                new.silver += gold_needed * Self::SILVER_PER_GOLD;
-                new.gold -= gold_needed;
-            } else {
-                new.silver += new.gold * Self::SILVER_PER_GOLD;
-                new.gold = 0;
-            }
-            if new.silver < 0 {
-                new.copper -= new.silver * Self::COPPER_PER_SILVER;
-                new.silver = 0;
-            }
-        }
-        if new.copper < 0 {
-            new.simplify();
-        }
-        new
-    }
-}
-
-impl Add for Money {
-    type Output = Money;
-
-    fn add(self, amt: Self) -> Self::Output {
-        Money {
-            platinum: self.platinum + amt.platinum,
-            gold: self.gold + amt.gold,
-            electrum: self.electrum + amt.electrum,
-            silver: self.silver + amt.silver,
-            copper: self.copper + amt.copper,
-        }
     }
 }

@@ -1,6 +1,7 @@
 use crate::basic::{ActivationTime, AreaOfEffect, AttackType, EffectDuration, EffectRange, Stat};
+use serde::{self, Deserialize, Serialize};
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub struct Spell<'a> {
     pub name: &'a str,
     pub level: u8,
@@ -8,8 +9,7 @@ pub struct Spell<'a> {
     pub cast_time: ActivationTime,
     pub range: EffectRange,
     pub area: Option<AreaOfEffect>,
-    // Verbal, Somatic, Material, description of material components
-    pub components: (bool, bool, bool, Option<&'a str>),
+    pub components: SpellComponents<'a>,
     pub duration: EffectDuration,
     pub concentration: bool,
     pub save: Option<Stat>,
@@ -21,7 +21,15 @@ pub struct Spell<'a> {
     // spells in upcast slots)?
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+pub struct SpellComponents<'a> {
+    verbal: bool,
+    somatic: bool,
+    material: bool,
+    material_desc: Option<&'a str>,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub enum SpellSchool {
     Abjuration,
     Conjuration,
@@ -31,4 +39,15 @@ pub enum SpellSchool {
     Illusion,
     Necromancy,
     Transmutation
+}
+
+impl<'a> SpellComponents<'a> {
+    pub fn new(v: bool, s: bool, m: bool, m_desc: Option<&'a str>) -> Self {
+        SpellComponents {
+            verbal: v, 
+            somatic: s, 
+            material: m, 
+            material_desc: m_desc
+        }
+    }
 }

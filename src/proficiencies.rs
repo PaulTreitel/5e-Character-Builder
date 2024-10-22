@@ -1,16 +1,12 @@
+use serde::{Deserialize, Serialize};
 
-
-pub trait Proficiency {
-
-}
-
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub enum LanguageProf<'a> {
     Choice,
     Lang{name: &'a str},
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub enum ToolProf<'a> {
     InstrumentChoice,
     Instrument{name: &'a str},
@@ -21,7 +17,7 @@ pub enum ToolProf<'a> {
     Generic{name: &'a str},
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub enum ArmorProf<'a> {
     Light,
     Medium,
@@ -30,7 +26,7 @@ pub enum ArmorProf<'a> {
     Specific{name: &'a str},
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub enum WeaponProf<'a> {
     SimpleMelee,
     SimpleRanged,
@@ -39,24 +35,9 @@ pub enum WeaponProf<'a> {
     Specific{name: &'a str},
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub enum ToolLangProf<'a> {
+    #[serde(borrow)]
     Lang(LanguageProf<'a>),
     Tool(ToolProf<'a>),
-}
-
-impl Proficiency for LanguageProf<'_> {
-
-}
-
-impl Proficiency for ToolProf<'_> {
-
-}
-
-impl Proficiency for ArmorProf<'_> {
-
-}
-
-impl Proficiency for WeaponProf<'_> {
-
 }
