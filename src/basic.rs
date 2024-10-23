@@ -1,5 +1,33 @@
 use serde::{self, Deserialize, Serialize};
 
+pub trait Item<'a> {
+    fn name(self) -> String;
+    fn description(self) -> String;
+    fn rarity(self) -> Rarity;
+    fn is_magic(self) -> bool;
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+pub enum Rarity {
+    Common,
+    Uncommon,
+    Rare,
+    VeryRare,
+    Legendary,
+    Artifact,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+pub enum DieSize {
+    D4,
+    D6,
+    D8,
+    D10,
+    D12,
+    D20,
+    DPercentile,
+}
+
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub enum Skill<'a> {
     Acrobatics, 
@@ -64,6 +92,16 @@ pub enum Stat {
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+pub enum StatValue {
+    Strength(u8),
+    Dexterity(u8),
+    Constitution(u8),
+    Intelligence(u8),
+    Wisdom(u8),
+    Charisma(u8),
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub struct AbilityScores {
     strength: u8,
     dexterity: u8,
@@ -83,7 +121,7 @@ pub enum Sense<'a> {
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
-pub enum DamageTypes {
+pub enum DamageType {
     Acid,
     Bludgeoning,
     Cold,

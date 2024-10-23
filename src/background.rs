@@ -17,11 +17,11 @@ pub struct Background<'a> {
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub struct BackgoundCharacterization<'a> {
     #[serde(borrow)]
-    personality_traits: Vec<&'a str>,
+    personality: Vec<&'a str>,
     ideals: Vec<&'a str>,
     bonds: Vec<&'a str>,
     flaws: Vec<&'a str>,
-    bg_type_choice: Option<Vec<&'a str>>,
+    bg_choice: Option<Vec<&'a str>>,
 }
 
 impl<'a> Background<'a> {
@@ -43,5 +43,17 @@ impl<'a> Background<'a> {
             money,
             character_choices
         }
+    }
+}
+
+impl<'a> BackgoundCharacterization<'a> {
+    pub fn new(
+        personality: Vec<&'a str>, 
+        ideals: Vec<&'a str>,
+        bonds: Vec<&'a str>,
+        flaws: Vec<&'a str>,
+        bg_choice: Option<Vec<&'a str>>,
+    ) -> Self {
+        BackgoundCharacterization { personality, ideals, bonds, flaws, bg_choice }
     }
 }
