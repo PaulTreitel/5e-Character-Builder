@@ -1,31 +1,27 @@
 use serde::{Deserialize, Serialize};
 
-use crate::basic::{DamageType, DieSize, Item, Rarity};
+use crate::{basic::{DamageType, DieSize}, proficiencies::WeaponProf};
+
+use super::items::{Item, ItemRarity};
 
 
 
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
-pub struct Weapon<'a> {
-    name: &'a str,
-    description: &'a str,
-    rarity: Rarity,
+pub struct Weapon {
+    name: String,
+    description: String,
+    rarity: ItemRarity,
     is_magic: bool,
+    req_attunement: bool,
     base_dmg_die: DieSize,
     base_dmg_type: DamageType,
     extra_dmg: Option<Vec<(DieSize, DamageType)>>,
-    category: WeaponType,
+    category: WeaponProf,
     silvered: bool,
     adamantine: bool,
     properties: Vec<WeaponProperty>,
-
-}
-
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
-pub enum WeaponType {
-    SimpleMelee,
-    SimpleRanged,
-    MartialMelee,
-    MartialRanged,
+    equipped: bool,
+    // TODO anything else to represent?
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
@@ -43,20 +39,20 @@ pub enum WeaponProperty {
     Versatile{one_hand: DieSize, two_hand: DieSize},
 }
 
-impl<'a> Weapon<'a> {
+impl Weapon {
 
 }
 
-impl<'a> Item<'_> for Weapon<'_> {
+impl Item for Weapon {
     fn name(self) -> String {
-        self.name.to_string()
+        self.name
     }
 
     fn description(self) -> String {
-        self.description.to_string()
+        self.description
     }
 
-    fn rarity(self) -> Rarity {
+    fn rarity(self) -> ItemRarity {
         self.rarity.to_owned()
     }
 

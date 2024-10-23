@@ -1,43 +1,51 @@
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
-pub enum LanguageProf<'a> {
+pub enum LanguageProf {
     Choice,
-    Lang{name: &'a str},
+    Lang{name: String},
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
-pub enum ToolProf<'a> {
+pub enum ToolProf {
     InstrumentChoice,
-    Instrument{name: &'a str},
+    Instrument{name: String},
     GamingChoice,
-    Game{name: &'a str},
+    Game{name: String},
     ArtisanChoice,
-    Artisan{name: &'a str},
-    Generic{name: &'a str},
+    Artisan{name: String},
+    DuisguiseKit,
+    ForgeryKit,
+    HerbalismKit,
+    NavigatorsTools,
+    PoisonersKit,
+    ThievesTools,
+    LandVehicle,
+    WaterVehicle,
+    Custom{name: String},
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
-pub enum ArmorProf<'a> {
+pub enum ArmorProf {
     Light,
     Medium,
     Heavy,
     Shields,
-    Specific{name: &'a str},
+    Specific{name: String},
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
-pub enum WeaponProf<'a> {
+pub enum WeaponProf {
     SimpleMelee,
     SimpleRanged,
     MartialMelee,
     MartialRanged,
-    Specific{name: &'a str},
+    Firearm,
+    Specific{name: String},
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
-pub enum ToolLangProf<'a> {
-    #[serde(borrow)]
-    Lang(LanguageProf<'a>),
-    Tool(ToolProf<'a>),
+pub enum ToolLangProf {
+    Lang(LanguageProf),
+    Tool(ToolProf),
 }

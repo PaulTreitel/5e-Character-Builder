@@ -1,22 +1,5 @@
 use serde::{self, Deserialize, Serialize};
 
-pub trait Item<'a> {
-    fn name(self) -> String;
-    fn description(self) -> String;
-    fn rarity(self) -> Rarity;
-    fn is_magic(self) -> bool;
-}
-
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
-pub enum Rarity {
-    Common,
-    Uncommon,
-    Rare,
-    VeryRare,
-    Legendary,
-    Artifact,
-}
-
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub enum DieSize {
     D4,
@@ -29,7 +12,7 @@ pub enum DieSize {
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
-pub enum Skill<'a> {
+pub enum Skill {
     Acrobatics, 
     AnimalHandling, 
     Arcana, 
@@ -48,7 +31,7 @@ pub enum Skill<'a> {
     SleightOfHand,
     Stealth,
     Survival,
-    Custom(&'a str),
+    Custom(String),
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
@@ -112,12 +95,12 @@ pub struct AbilityScores {
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
-pub enum Sense<'a> {
+pub enum Sense {
     Blindsight(u32),
     Darkvision(u32),
     Tremorsense(u32),
     Truesight(u32),
-    Custom{ name: &'a str, distance: u32 },
+    Custom{ name: String, distance: u32 },
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
@@ -138,7 +121,7 @@ pub enum DamageType {
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
-pub enum Condition<'a> {
+pub enum Condition {
     Blinded,
     Charmed,
     Deafened,
@@ -154,13 +137,13 @@ pub enum Condition<'a> {
     Restrained,
     Stunned,
     Unconscious,
-    Custom(&'a str),
+    Custom(String),
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 // There are some "Partnered Content" resistances/immunities that don't appear
 // here. I'm not dealing with them specifically.
-pub enum DamageResistImmune<'a> {
+pub enum DamageResistImmune {
     Acid,
     Bludgeoning,
     Cold,
@@ -180,11 +163,11 @@ pub enum DamageResistImmune<'a> {
     NonMagicalUnsilveredBPSAtk,
     NonMagicalNonAdamantineBPSAtk,
     NonMagicalUnsilveredNonAdamantineBPSAtk,
-    Custom(&'a str),
+    Custom(String),
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
-pub enum CreatureType<'a> {
+pub enum CreatureType {
     Abberation,
     Beast,
     Celestial,
@@ -198,7 +181,7 @@ pub enum CreatureType<'a> {
     Monstrosity,
     Ooze,
     Undead,
-    Custom(&'a str),
+    Custom(String),
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
@@ -255,20 +238,6 @@ pub enum CreatureSize {
 
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub struct AreaOfEffect {
-    size: u32,
-    shape: EffectShape,
-}
-
-impl AreaOfEffect {
-    pub fn new(size: u32, shape: EffectShape) -> AreaOfEffect {
-        AreaOfEffect { size: size, shape: shape }
-    }
-
-    pub fn size(self) -> u32 {
-        self.size
-    }
-
-    pub fn shape(self) -> EffectShape {
-        self.shape
-    }
+    pub size: u32,
+    pub shape: EffectShape,
 }
