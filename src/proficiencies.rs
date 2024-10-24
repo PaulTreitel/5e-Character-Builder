@@ -1,5 +1,7 @@
 use serde::{Deserialize, Serialize};
 
+use crate::basic::{Skill, Stat};
+
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub enum LanguageProf {
     Choice,
@@ -48,4 +50,18 @@ pub enum WeaponProf {
 pub enum ToolLangProf {
     Lang(LanguageProf),
     Tool(ToolProf),
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+pub enum Proficiency {
+    Tool(ToolProf),
+    ToolExpertise(ToolProf),
+    ToolHalfProf(ToolProf),
+    Lang(LanguageProf),
+    Weapon(WeaponProf),
+    Armor(ArmorProf),
+    Save(Stat),
+    Skill(Skill),
+    SkillExpertise(Skill),
+    SkillHalfProf(Skill),
 }

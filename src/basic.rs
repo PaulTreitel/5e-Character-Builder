@@ -1,5 +1,7 @@
 use serde::{self, Deserialize, Serialize};
 
+use std::fmt;
+
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub enum DieSize {
     D4,
@@ -41,6 +43,15 @@ pub struct Speeds {
     climb: u32,
     fly: u32,
     burrow: u32,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+pub enum Speed {
+    Walk,
+    Swim,
+    Climb,
+    Fly,
+    Burrow,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
@@ -240,4 +251,10 @@ pub enum CreatureSize {
 pub struct AreaOfEffect {
     pub size: u32,
     pub shape: EffectShape,
+}
+
+impl fmt::Display for DamageType {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+         write!(f, "{:?}", self)
+    }
 }
