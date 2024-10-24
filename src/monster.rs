@@ -3,9 +3,11 @@ use serde::{Serialize, Deserialize};
 
 use crate::{
     basic::{
-        AbilityScores, Alignment, Condition, CreatureSize, CreatureType, DamageResistImmune, Sense, Skill, Speeds, Stat
+        AbilityScores, Alignment, Condition, DamageResistImmune, Sense, Skill, Speeds, Stat
     }, 
-    proficiencies::LanguageProf};
+    proficiencies::LanguageProf,
+    character_attributes::{CreatureType, CreatureSize}
+};
 
 #[derive(Debug, Clone, PartialEq, PartialOrd, Serialize, Deserialize)]
 pub struct MonsterBase {

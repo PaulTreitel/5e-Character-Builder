@@ -1,7 +1,6 @@
-use crate::items::equipment::Equipment;
+use crate::inventory::{equipment::Equipment, money::Money};
 use crate::basic::Skill;
 use crate::proficiencies::ToolLangProf;
-use crate::money::Money;
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]

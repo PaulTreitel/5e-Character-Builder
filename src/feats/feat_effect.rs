@@ -1,6 +1,10 @@
 use serde::{Deserialize, Serialize};
 
-use crate::{basic::{ActivationTime, Condition, CreatureSize, DamageResistImmune, Sense, Skill, Speed, Stat}, proficiencies::Proficiency};
+use crate::{
+    basic::{ActivationTime, Condition, DamageResistImmune, Sense, Skill, Speed, Stat}, 
+    proficiencies::Proficiency,
+    character_attributes::CreatureSize
+};
 
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub enum FeatEffect {

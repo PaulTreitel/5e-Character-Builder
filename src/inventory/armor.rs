@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 
 use crate::proficiencies::ArmorProf;
 
-use super::items::{Item, ItemRarity};
+use super::inventory::{Item, ItemRarity};
 
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub struct Armor {
@@ -25,19 +25,23 @@ enum ArmorType {
 }
 
 impl Item for Armor {
-    fn name(self) -> String {
-        self.name
+    fn name(&self) -> &str {
+        &self.name
     }
 
-    fn description(self) -> String {
-        self.description
+    fn description(&self) -> &str {
+        &self.description
     }
 
-    fn rarity(self) -> super::items::ItemRarity {
-        self.rarity
+    fn rarity(&self) -> &ItemRarity {
+        &self.rarity
     }
 
-    fn is_magic(self) -> bool {
+    fn is_magic(&self) -> bool {
         self.is_magic
+    }
+    
+    fn weight(&self) -> u32 {
+        self.weight
     }
 }

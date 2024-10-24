@@ -1,8 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-use crate::money::Money;
-
-use super::items::{Equippable, Item, ItemRarity};
+use super::{inventory::{Equippable, Item, ItemRarity}, money::Money};
 
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub struct MagicItem {
@@ -18,19 +16,26 @@ pub struct MagicItem {
 }
 
 impl Item for MagicItem {
-    fn name(self) -> String {
-        self.name
+    fn name(&self) -> &str {
+        &self.name
     }
 
-    fn description(self) -> String {
-        self.description
+    fn description(&self) -> &str {
+        &self.description
     }
 
-    fn rarity(self) -> ItemRarity {
-        self.rarity
+    fn rarity(&self) -> &ItemRarity {
+        &self.rarity
     }
 
-    fn is_magic(self) -> bool {
+    fn is_magic(&self) -> bool {
         true
+    }
+    
+    fn weight(&self) -> u32 {
+        match self.weight {
+            Some(w) => w,
+            None => 0,
+        }
     }
 }

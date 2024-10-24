@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 
 use crate::{basic::{DamageType, DieSize}, proficiencies::WeaponProf};
 
-use super::items::{Item, ItemRarity};
+use super::inventory::{Item, ItemRarity};
 
 
 
@@ -10,6 +10,7 @@ use super::items::{Item, ItemRarity};
 pub struct Weapon {
     name: String,
     description: String,
+    weight: Option<u32>,
     rarity: ItemRarity,
     is_magic: bool,
     req_attunement: bool,
@@ -44,19 +45,26 @@ impl Weapon {
 }
 
 impl Item for Weapon {
-    fn name(self) -> String {
-        self.name
+    fn name(&self) -> &str {
+        &self.name
     }
 
-    fn description(self) -> String {
-        self.description
+    fn description(&self) -> &str {
+        &self.description
     }
 
-    fn rarity(self) -> ItemRarity {
-        self.rarity.to_owned()
+    fn rarity(&self) -> &ItemRarity {
+        &self.rarity
     }
 
-    fn is_magic(self) -> bool {
+    fn is_magic(&self) -> bool {
         self.is_magic
+    }
+    
+    fn weight(&self) -> u32 {
+        match self.weight {
+            Some(w) => w,
+            None => 0,
+        }
     }
 }

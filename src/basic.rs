@@ -178,24 +178,6 @@ pub enum DamageResistImmune {
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
-pub enum CreatureType {
-    Abberation,
-    Beast,
-    Celestial,
-    Construct,
-    Dragon,
-    Elemental,
-    Fey,
-    Fiend,
-    Giant,
-    Humanoid,
-    Monstrosity,
-    Ooze,
-    Undead,
-    Custom(String),
-}
-
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub enum ActivationTime {
     Action,
     BonusAction,
@@ -235,16 +217,6 @@ pub enum EffectRange {
     Touch,
     Feet(u32),
     Miles(u32),
-}
-
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
-pub enum CreatureSize {
-    Tiny,
-    Small,
-    Medium,
-    Large,
-    Huge,
-    Gargantuan,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]

@@ -7,9 +7,9 @@ mod basic;
 mod background;
 mod proficiencies;
 mod monster;
-mod money;
-mod items;
+mod inventory;
 mod feats;
+mod character_attributes;
 
 
 fn main() {
