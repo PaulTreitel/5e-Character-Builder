@@ -3,19 +3,20 @@ use serde::{self, Deserialize, Serialize};
 
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub struct Spell {
-    pub name: String,
-    pub level: u8,
-    pub school: SpellSchool,
-    pub cast_time: ActivationTime,
-    pub range: EffectRange,
-    pub area: Option<AreaOfEffect>,
-    pub components: SpellComponents,
-    pub duration: EffectDuration,
-    pub concentration: bool,
-    pub save: Option<Stat>,
-    pub attack: Option<AttackType>,
-    pub description: String,
-    pub spell_lists: Vec<String>,
+    name: String,
+    description: String,
+    level: u8,
+    school: SpellSchool,
+    cast_time: ActivationTime,
+    range: EffectRange,
+    area: Option<AreaOfEffect>,
+    components: SpellComponents,
+    duration: EffectDuration,
+    concentration: bool,
+    ritual: bool,
+    save: Option<Stat>,
+    attack: Option<AttackType>,
+    spell_lists: Vec<String>,
     // TODO: How do we store (a) spell effects that act on the character sheet
     // and (b) spell upcasting benefits (which should also be displayed on
     // spells in upcast slots)?
