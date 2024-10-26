@@ -5,6 +5,18 @@ pub mod money;
 pub mod weapon;
 pub mod container;
 
+use container::Container;
+use inventory::ItemType;
+use money::Money;
+use serde::{Deserialize, Serialize};
+
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+pub struct Inventory {
+    money: Money,
+    main_inventory: Vec<ItemType>,
+    containers: Vec<Container>,
+}
+
 mod inventory {
 
     use serde::{Deserialize, Serialize};
@@ -14,16 +26,8 @@ mod inventory {
         container::Container, 
         equipment::{Equipment, EquipmentPack}, 
         magic_item::MagicItem, 
-        money::Money, 
         weapon::Weapon
     };
-
-    #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
-    pub struct Inventory {
-        money: Money,
-        main_inventory: Vec<ItemType>,
-        containers: Vec<Container>,
-    }
 
     #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
     pub enum ItemRarity {

@@ -65,3 +65,10 @@ pub enum Proficiency {
     SkillExpertise(Skill),
     SkillHalfProf(Skill),
 }
+
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+pub enum ProficiencyLevel {
+    Half,
+    Full,
+    Expertise,
+}

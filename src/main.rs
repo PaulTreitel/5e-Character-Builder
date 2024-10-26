@@ -6,9 +6,12 @@ mod monster;
 mod inventory;
 mod feats;
 mod character_attributes;
-
+mod character;
+mod class;
 
 fn main() {
     println!("Hello, world!");
     feats::test_create_feats::make_feats();
+    // let _x = class::Class{};
+    // let _y = character::Character{};
 }

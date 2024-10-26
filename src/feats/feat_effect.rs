@@ -1,9 +1,9 @@
 use serde::{Deserialize, Serialize};
 
 use crate::{
-    basic::{ActivationTime, Condition, DamageResistImmune, Sense, Skill, Speed, Stat}, 
-    proficiencies::Proficiency,
-    character_attributes::CreatureSize
+    basic::{ActivationTime, Condition, DamageResistImmune, Skill, Speed, Stat}, 
+    character_attributes::{CreatureSize, Sense}, 
+    proficiencies::Proficiency
 };
 
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]

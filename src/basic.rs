@@ -63,19 +63,6 @@ pub enum AttackType {
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
-pub enum Alignment {
-    LawfulGood,
-    LawfulNeutral,
-    LawfulEvil,
-    NeutralGood,
-    TrueNeutral,
-    NeutralEvil,
-    ChaoticGood,
-    ChaoticNeutral,
-    ChaoticEvil,
-}
-
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub enum Stat {
     Strength,
     Dexterity,
@@ -86,16 +73,6 @@ pub enum Stat {
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
-pub enum StatValue {
-    Strength(u8),
-    Dexterity(u8),
-    Constitution(u8),
-    Intelligence(u8),
-    Wisdom(u8),
-    Charisma(u8),
-}
-
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub struct AbilityScores {
     strength: u8,
     dexterity: u8,
@@ -103,15 +80,6 @@ pub struct AbilityScores {
     intelligence: u8,
     wisdom: u8,
     charisma: u8,
-}
-
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
-pub enum Sense {
-    Blindsight(u32),
-    Darkvision(u32),
-    Tremorsense(u32),
-    Truesight(u32),
-    Custom{ name: String, distance: u32 },
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
