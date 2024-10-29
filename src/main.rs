@@ -8,6 +8,7 @@ mod feats;
 mod character_attributes;
 mod character;
 mod class;
+mod race;
 
 fn main() {
     println!("Hello, world!");

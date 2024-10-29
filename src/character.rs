@@ -5,7 +5,11 @@ use health::CharacterHealth;
 use proficiencies::CharacterProficiencies;
 use serde::{Deserialize, Serialize};
 use crate::{
-    basic::{AbilityScores, Condition, DamageResistImmune, Speeds}, character_attributes::{Alignment, CreatureSize, CreatureType, Sense}, class::Class, inventory::Inventory
+    basic::{AbilityScores, Condition, DamageResistImmune, Speeds}, 
+    character_attributes::{Alignment, CreatureSize, CreatureType, Sense}, 
+    class::Class, 
+    inventory::Inventory, 
+    race::Race
 };
 
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
@@ -13,14 +17,15 @@ pub struct Character {
     name: String,
     player: Option<String>,
     scores: AbilityScores,
+    race: Race,
+    character_level: u8,
     main_class: Class,
     multiclasses: Option<Vec<(Class, u8)>>,
     speeds: Speeds,
-    senses: Vec<Sense>,
+    senses: Option<Vec<Sense>>,
     size: CreatureSize,
     creature_type: CreatureType,
-    alignment: Alignment,
-    character_level: u8,
+    alignment: Option<Alignment>,
     proficiencies: CharacterProficiencies,
     inventory: Inventory,
     inspiration: bool,
