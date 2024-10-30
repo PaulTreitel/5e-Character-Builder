@@ -71,3 +71,10 @@ pub enum ProficiencyLevel {
     Full,
     Expertise,
 }
+
+impl Default for ToolLangProf {
+    fn default() -> Self {
+        // Language is chosen arbitrarily vs tool
+        ToolLangProf::Lang(LanguageProf::Choice)
+    }
+}

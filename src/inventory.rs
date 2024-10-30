@@ -10,7 +10,7 @@ use inventory::ItemType;
 use money::Money;
 use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, Default)]
 pub struct Inventory {
     money: Money,
     main_inventory: Vec<ItemType>,

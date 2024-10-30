@@ -3,7 +3,7 @@ use serde::{Deserialize, Serialize};
 use crate::{basic::DieSize, class::Classes};
 
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize, Default)]
-pub struct CharacterHealth {
+pub struct CharHealth {
     current_max_hp: i32,
     base_max_hp: i32,
     current_hp: i32,
@@ -28,7 +28,7 @@ pub enum HealthError {
     RemoveNonExistentDie,
 }
 
-impl CharacterHealth {
+impl CharHealth {
     pub fn new(
         current_hp: i32, 
         max_hp: i32, 
@@ -255,12 +255,12 @@ impl CharacterHealth {
 
 
 mod test {
-    use super::CharacterHealth;
+    use super::CharHealth;
     use crate::{basic::DieSize, class::Classes};
 
     #[test]
     fn test_hit_dice_sorting() {
-        let mut h = CharacterHealth::default();
+        let mut h = CharHealth::default();
         let _ = h.add_hit_die(Classes::Cleric, DieSize::D8);
         let _ = h.add_hit_die(Classes::Sorcerer, DieSize::D6);
         let _ = h.add_hit_die(Classes::Barbarian, DieSize::D12);

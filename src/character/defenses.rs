@@ -2,7 +2,7 @@ use serde::{Serialize, Deserialize};
 
 use crate::basic::{Condition, DamageResistImmune};
 
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, Default)]
 pub struct Defenses {
     armor_class: u8,
     resistances: Vec<DamageResistImmune>,

@@ -1,10 +1,11 @@
 pub mod char_attributes;
 mod char_background;
-mod char_class;
+pub mod char_class;
 mod char_proficiencies;
 mod health;
 mod recompute;
 mod defenses;
+mod builder;
 
 use crate::{inventory::Inventory, race::Race};
 use char_attributes::{AbilityScores, Alignment, CreatureSize, CreatureType, Sense, Speeds};
@@ -12,10 +13,10 @@ use char_background::CharBackground;
 use char_class::CharClass;
 use char_proficiencies::CharProficiencies;
 use defenses::Defenses;
-use health::CharacterHealth;
+use health::CharHealth;
 use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, Default)]
 pub struct Character {
     name: String,
     player: String,
@@ -23,7 +24,6 @@ pub struct Character {
     pub base_scores: AbilityScores,
     race: Race,
     background: CharBackground,
-    character_level: u8,
     experience: u32,
     main_class: CharClass,
     multiclasses: Vec<CharClass>,
@@ -36,7 +36,7 @@ pub struct Character {
     base_proficiencies: CharProficiencies,
     inventory: Inventory,
     inspiration: bool,
-    pub health: CharacterHealth,
+    pub health: CharHealth,
     pub defenses: Defenses,
     // TODO physical_description
     // TODO
@@ -52,14 +52,15 @@ mod character {
     };
 
     use super::{
-        char_attributes::{Alignment, CreatureSize, CreatureType, Sense, Speed, Speeds}, char_background::CharBackground, char_class::CharClass, char_proficiencies::CharProficiencies, Character, CharacterError
+        char_attributes::{AbilityScores, Alignment, CreatureSize, CreatureType, Sense, Speed, Speeds}, 
+        char_background::CharBackground, 
+        char_class::CharClass, 
+        char_proficiencies::CharProficiencies, 
+        Character, 
+        CharacterError
     };
 
     impl Character {
-        pub fn new() -> Self {
-            todo!("Write Character constructor")
-        }
-
         pub fn name(&self) -> &str {
             &self.name
         }
@@ -77,7 +78,16 @@ mod character {
         }
 
         pub fn character_level(&self) -> u8 {
-            self.character_level
+            let main_lvl = self.main_class.level();
+            let tmp = self.multiclasses.clone()
+                .iter()
+                .map(|x| x.level())
+                .reduce(|acc, e| acc + e);
+            if let Some(x) = tmp {
+                main_lvl + x
+            } else {
+                main_lvl
+            }
         }
 
         pub fn xp(&self) -> u32 {
@@ -127,13 +137,14 @@ mod character {
         }
 
         pub fn pb(&self) -> u8 {
-            if self.character_level <= 4 {
+            let lvl = self.character_level();
+            if lvl <= 4 {
                 2
-            } else if self.character_level <= 8 {
+            } else if lvl <= 8 {
                 3
-            } else if self.character_level <= 12 {
+            } else if lvl <= 12 {
                 4
-            } else if self.character_level <= 16 {
+            } else if lvl <= 16 {
                 5
             } else {
                 6

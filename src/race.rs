@@ -1,3 +1,5 @@
+use std::default;
+
 use serde::{Serialize, Deserialize};
 
 use crate::{
@@ -7,7 +9,7 @@ use crate::{
     proficiencies::LanguageProf
 };
 
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, Default)]
 pub struct Race {
     name: String,
     description: String,
@@ -22,14 +24,14 @@ pub struct Race {
     subraces: Option<Vec<SubRace>>,
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, Default)]
 pub struct SubRace {
     name: String,
     description: String,
     abilities: Vec<FeatEffect>,
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, Default)]
 struct RacialAbility {
     name: String,
     description: String,
@@ -44,4 +46,10 @@ pub enum RaceASI {
     TriplePlusOne(Option<Stat>, Option<Stat>, Option<Stat>),
     PlusOneToAll,
     DoublePlusTwo(Option<Stat>, Option<Stat>),
+}
+
+impl Default for RaceASI {
+    fn default() -> Self {
+        RaceASI::PlusTwoPlusOne(None, None)
+    }
 }

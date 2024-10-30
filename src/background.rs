@@ -3,7 +3,7 @@ use crate::basic::Skill;
 use crate::proficiencies::ToolLangProf;
 use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, Default)]
 pub struct Background {
     name: String,
     description: String,

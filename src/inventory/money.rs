@@ -3,7 +3,7 @@ use serde::{Serialize, Deserialize};
 
 
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize, Default)]
 pub struct Money {
     platinum: i32,
     gold: i32,

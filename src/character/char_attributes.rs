@@ -1,3 +1,5 @@
+use std::default;
+
 use serde::{Deserialize, Serialize};
 
 use crate::basic::Stat;
@@ -12,7 +14,7 @@ pub enum Speed {
     Burrow,
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, Default)]
 pub struct Speeds {
     walk: u32,
     swim: u32,
@@ -34,7 +36,7 @@ pub enum Alignment {
     ChaoticEvil,
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, Default)]
 pub struct AbilityScores {
     strength: u8,
     dexterity: u8,
@@ -53,7 +55,7 @@ pub enum Sense {
     Custom{ name: String, distance: u32 },
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, Default)]
 pub enum CreatureType {
     Abberation,
     Beast,
@@ -64,6 +66,7 @@ pub enum CreatureType {
     Fey,
     Fiend,
     Giant,
+    #[default]
     Humanoid,
     Monstrosity,
     Ooze,
@@ -71,10 +74,11 @@ pub enum CreatureType {
     Custom(String),
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize, Default)]
 pub enum CreatureSize {
     Tiny,
     Small,
+    #[default]
     Medium,
     Large,
     Huge,
