@@ -10,7 +10,7 @@ use inventory::ItemType;
 use money::Money;
 use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Inventory {
     money: Money,
     main_inventory: Vec<ItemType>,
@@ -39,14 +39,14 @@ mod inventory {
         Artifact,
     }
 
-    #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
     pub enum Equippable {
         Unequippable,
         Unequipped,
         Equipped,
     }
 
-    #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
     pub enum ItemType {
         BasicGear(Equipment),
         Pack(EquipmentPack),

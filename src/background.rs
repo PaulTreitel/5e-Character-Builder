@@ -3,7 +3,7 @@ use crate::basic::Skill;
 use crate::proficiencies::ToolLangProf;
 use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Background {
     name: String,
     description: String,
@@ -14,7 +14,7 @@ pub struct Background {
     character_choices: BackgoundCharacterization,
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct BackgoundCharacterization {
     personality: Vec<String>,
     ideals: Vec<String>,

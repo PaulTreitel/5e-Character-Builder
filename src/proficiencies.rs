@@ -2,13 +2,13 @@ use serde::{Deserialize, Serialize};
 
 use crate::basic::{Skill, Stat};
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub enum LanguageProf {
     Choice,
     Lang{name: String},
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub enum ToolProf {
     InstrumentChoice,
     Instrument{name: String},
@@ -27,7 +27,7 @@ pub enum ToolProf {
     Custom{name: String},
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub enum ArmorProf {
     Light,
     Medium,
@@ -36,7 +36,7 @@ pub enum ArmorProf {
     Specific{name: String},
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub enum WeaponProf {
     SimpleMelee,
     SimpleRanged,
@@ -46,13 +46,13 @@ pub enum WeaponProf {
     Specific{name: String},
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub enum ToolLangProf {
     Lang(LanguageProf),
     Tool(ToolProf),
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub enum Proficiency {
     Tool(ToolProf),
     ToolExpertise(ToolProf),
@@ -66,7 +66,7 @@ pub enum Proficiency {
     SkillHalfProf(Skill),
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub enum ProficiencyLevel {
     Half,
     Full,

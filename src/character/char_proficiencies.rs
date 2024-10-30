@@ -5,8 +5,8 @@ use crate::{
     proficiencies::{ArmorProf, LanguageProf, ProficiencyLevel, ToolProf, WeaponProf}
 };
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
-pub struct CharacterProficiencies {
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct CharProficiencies {
     skills: Vec<(Skill, ProficiencyLevel)>,
     saves: Vec<Stat>,
     armor: Vec<ArmorProf>,

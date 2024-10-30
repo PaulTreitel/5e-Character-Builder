@@ -1,13 +1,13 @@
 use serde::{Serialize, Deserialize};
 
 use crate::{
-    basic::{Speeds, Stat}, 
-    character_attributes::{CreatureSize, CreatureType}, 
+    basic::Stat, 
+    character::char_attributes::{CreatureSize, CreatureType, Speeds}, 
     feats::feat_effect::FeatEffect, 
     proficiencies::LanguageProf
 };
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Race {
     name: String,
     description: String,
@@ -24,21 +24,21 @@ pub struct Race {
     subraces: Option<Vec<SubRace>>,
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct SubRace {
     name: String,
     description: String,
     abilities: Vec<FeatEffect>,
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 struct RacialAbility {
     name: String,
     description: String,
     effect: Option<FeatEffect>,
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub enum RaceASI {
     PlusTwo(Option<Stat>),
     PlusOne(Option<Stat>),

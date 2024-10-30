@@ -13,7 +13,7 @@ pub enum DieSize {
     DPercentile,
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub enum Skill {
     Acrobatics, 
     AnimalHandling, 
@@ -36,25 +36,7 @@ pub enum Skill {
     Custom(String),
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
-pub struct Speeds {
-    walk: u32,
-    swim: u32,
-    climb: u32,
-    fly: u32,
-    burrow: u32,
-}
-
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
-pub enum Speed {
-    Walk,
-    Swim,
-    Climb,
-    Fly,
-    Burrow,
-}
-
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub enum AttackType {
     MeleeWeapon,
     RangedWeapon,
@@ -62,7 +44,7 @@ pub enum AttackType {
     RangedSpell,
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub enum Stat {
     Strength,
     Dexterity,
@@ -72,17 +54,7 @@ pub enum Stat {
     Charisma,
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
-pub struct AbilityScores {
-    strength: u8,
-    dexterity: u8,
-    constitution: u8,
-    intelligence: u8,
-    wisdom: u8,
-    charisma: u8,
-}
-
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub enum DamageType {
     Acid,
     Bludgeoning,
@@ -99,7 +71,7 @@ pub enum DamageType {
     Thunder,
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub enum Condition {
     Blinded,
     Charmed,
@@ -119,7 +91,7 @@ pub enum Condition {
     Custom(String),
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 // There are some "Partnered Content" resistances/immunities that don't appear
 // here. I'm not dealing with them specifically.
 pub enum DamageResistImmune {
@@ -147,14 +119,15 @@ pub enum DamageResistImmune {
 
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub enum ActivationTime {
-    Action,
-    BonusAction,
     Reaction,
+    BonusAction,
+    Action,
     Minute,
     TenMinutes,
     Hour,
     EightHours,
     Day,
+    SevenDays
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
@@ -169,7 +142,7 @@ pub enum EffectDuration {
     Special,
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub enum EffectShape {
     Square,
     Cube,
@@ -187,7 +160,7 @@ pub enum EffectRange {
     Miles(u32),
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct AreaOfEffect {
     pub size: u32,
     pub shape: EffectShape,

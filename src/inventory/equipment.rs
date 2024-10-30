@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 
 use super::{inventory::{Item, ItemRarity}, money, container};
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Equipment {
     name: String,
     description: String,
@@ -12,7 +12,7 @@ pub struct Equipment {
     // TODO what else to represent?
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct EquipmentPack {
     name: String,
     description: String,

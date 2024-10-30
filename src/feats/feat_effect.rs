@@ -1,12 +1,12 @@
 use serde::{Deserialize, Serialize};
 
 use crate::{
-    basic::{ActivationTime, Condition, DamageResistImmune, Skill, Speed, Stat}, 
-    character_attributes::{CreatureSize, Sense}, 
+    basic::{ActivationTime, Condition, DamageResistImmune, Skill, Stat}, 
+    character::char_attributes::{CreatureSize, Sense, Speed}, 
     proficiencies::Proficiency
 };
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub enum FeatEffect {
     IncreaseStat{ options: Vec<Stat>, by: u8, max: u8 },
     MaxHealthIncreaseFlat(u8),

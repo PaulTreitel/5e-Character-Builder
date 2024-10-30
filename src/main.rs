@@ -5,7 +5,6 @@ mod proficiencies;
 mod monster;
 mod inventory;
 mod feats;
-mod character_attributes;
 mod character;
 mod class;
 mod race;

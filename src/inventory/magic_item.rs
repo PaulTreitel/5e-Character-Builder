@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 
 use super::{inventory::{Equippable, Item, ItemRarity}, money::Money};
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct MagicItem {
     name: String,
     description: String,

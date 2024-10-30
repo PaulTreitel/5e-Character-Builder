@@ -2,12 +2,12 @@
 use serde::{Serialize, Deserialize};
 
 use crate::{
-    basic::{AbilityScores, Condition, DamageResistImmune, Skill, Speeds, Stat}, 
-    character_attributes::{Alignment, CreatureSize, CreatureType, Sense}, 
+    basic::{Condition, DamageResistImmune, Skill, Stat}, 
+    character::char_attributes::{AbilityScores, Alignment, CreatureSize, CreatureType, Sense, Speeds}, 
     proficiencies::LanguageProf
 };
 
-#[derive(Debug, Clone, PartialEq, PartialOrd, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
 pub struct MonsterBase {
     name: String,
     size: CreatureSize,
@@ -35,10 +35,14 @@ pub struct MonsterBase {
     mythic_actions: Option<Vec<String>>,
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 struct MonsterHealthStats {
     hit_die_size: u8,
     hit_die_count: u8,
     hit_dice_mod: i32,
     avg_hit_points: u32,
+}
+
+impl Eq for MonsterBase {
+    
 }

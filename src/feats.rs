@@ -7,7 +7,7 @@ use serde::{Deserialize, Serialize};
 use crate::{basic::Stat, proficiencies::ArmorProf};
 
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Feat {
     name: String,
     description: String,
@@ -15,7 +15,7 @@ pub struct Feat {
     effects: Option<Vec<FeatEffect>>,
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub enum FeatPrereq {
     Race(String),
     MinStat{ s: Vec<(Stat, u8)>, stat_logical_or: bool },

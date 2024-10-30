@@ -4,7 +4,7 @@ use super::inventory::{Item, ItemRarity, ItemType};
 
 
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Container {
     name: String,
     description: String,

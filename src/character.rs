@@ -1,24 +1,25 @@
-mod proficiencies;
+mod char_proficiencies;
 mod health;
+mod char_background;
+pub mod char_attributes;
 
+use char_background::CharBackground;
 use health::CharacterHealth;
-use proficiencies::CharacterProficiencies;
+use char_proficiencies::CharProficiencies;
 use serde::{Deserialize, Serialize};
-use crate::{
-    basic::{AbilityScores, Condition, DamageResistImmune, Speeds}, 
-    character_attributes::{Alignment, CreatureSize, CreatureType, Sense}, 
-    class::Class, 
-    inventory::Inventory, 
-    race::Race
-};
+use crate::basic::{Condition, DamageResistImmune};
+use char_attributes::{AbilityScores, Alignment, CreatureSize, CreatureType, Sense, Speeds};
+use crate::{class::Class, inventory::Inventory, race::Race};
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Character {
     name: String,
     player: Option<String>,
     scores: AbilityScores,
     race: Race,
+    background: CharBackground,
     character_level: u8,
+    experience: Option<u32>,
     main_class: Class,
     multiclasses: Option<Vec<(Class, u8)>>,
     speeds: Speeds,
@@ -26,7 +27,7 @@ pub struct Character {
     size: CreatureSize,
     creature_type: CreatureType,
     alignment: Option<Alignment>,
-    proficiencies: CharacterProficiencies,
+    proficiencies: CharProficiencies,
     inventory: Inventory,
     inspiration: bool,
     health: CharacterHealth,

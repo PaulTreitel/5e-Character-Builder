@@ -1,7 +1,7 @@
 use crate::basic::{ActivationTime, AreaOfEffect, AttackType, EffectDuration, EffectRange, Stat};
 use serde::{self, Deserialize, Serialize};
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Spell {
     name: String,
     description: String,
@@ -22,7 +22,7 @@ pub struct Spell {
     // spells in upcast slots)?
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct SpellComponents {
     verbal: bool,
     somatic: bool,
@@ -30,7 +30,7 @@ pub struct SpellComponents {
     material_desc: Option<String>,
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub enum SpellSchool {
     Abjuration,
     Conjuration,
