@@ -119,6 +119,17 @@ impl AbilityScores {
             },
         }
     }
+
+    pub fn set_stat(&mut self, s: Stat, val: u8) -> () {
+        match s {
+            Stat::Strength => self.strength = val,
+            Stat::Dexterity => self.dexterity = val,
+            Stat::Constitution => self.constitution = val,
+            Stat::Intelligence => self.intelligence = val,
+            Stat::Wisdom => self.wisdom = val,
+            Stat::Charisma => self.charisma = val,
+        }
+    }
 }
 
 impl Speeds {

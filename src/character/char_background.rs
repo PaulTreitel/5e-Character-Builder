@@ -130,4 +130,19 @@ impl CharBackground {
             Err(CharBGError::CharacterTraitOutOfBounds)
         }
     }
+
+    pub fn reset_mechanics(&mut self) -> () {
+        self.name = self.default.name().to_string();
+        self.description = self.default.desc().to_string();
+        self.skill_profs = self.default.skills().to_owned();
+        self.tool_lang_profs = self.default.tools_and_langs().to_owned();
+    }
+
+    pub fn reset_traits(&mut self) -> () {
+        self.personality = Vec::new();
+        self.ideals = Vec::new();
+        self.bonds = Vec::new();
+        self.flaws = Vec::new();
+        self.bg_choice = Vec::new();
+    }
 }
