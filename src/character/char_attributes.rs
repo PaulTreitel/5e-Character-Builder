@@ -82,7 +82,6 @@ pub enum CreatureSize {
 }
 
 impl AbilityScores {
-    #[inline]
     pub fn get_stat(&self, s: Stat) -> u8 {
         match s {
             Stat::Strength => self.strength,
@@ -94,12 +93,10 @@ impl AbilityScores {
         }
     }
 
-    #[inline]
     pub fn get_mod(&self, s: Stat) -> i8 {
         (self.get_stat(s) as i8 / 2) - 5
     }
 
-    #[inline]
     pub fn change_stat(&mut self, s: Stat, amt: i8, max: u8) -> () {
         match s {
             Stat::Strength => {
@@ -125,19 +122,18 @@ impl AbilityScores {
 }
 
 impl Speeds {
-    pub fn get_speed(&self, s: Speed) -> Option<u32> {
-        let speed = match s {
+    pub fn get_speed(&self, s: Speed) -> u32 {
+        match s {
             Speed::Walk => self.walk,
             Speed::Swim => self.swim,
             Speed::Climb => self.climb,
             Speed::Fly => self.fly,
             Speed::Burrow => self.burrow,
-        };
-        if speed > 0 {
-            Some(speed)
-        } else {
-            None
         }
+    }
+
+    pub fn has_speed(&self, s: Speed) -> bool {
+        self.get_speed(s) > 0
     }
 
     pub fn set_speed(&mut self, s: Speed, amt: u32) -> () {

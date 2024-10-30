@@ -1,4 +1,4 @@
-use crate::basic::Skill;
+use crate::{background::Background, basic::Skill};
 use crate::proficiencies::ToolLangProf;
 use serde::{Deserialize, Serialize};
 
@@ -13,6 +13,7 @@ pub struct CharBackground {
     bonds: Vec<String>,
     flaws: Vec<String>,
     bg_choice: Vec<String>,
+    default: Background,
 }
 
 pub enum CharBGError {
@@ -22,6 +23,21 @@ pub enum CharBGError {
 }
 
 impl CharBackground {
+    pub fn from_background(bg: &Background) -> Self {
+        CharBackground {
+            name: bg.name().to_string(),
+            description: bg.desc().to_string(),
+            skill_profs: bg.skills().clone(),
+            tool_lang_profs: bg.tools_and_langs().clone(),
+            personality: vec![],
+            ideals: vec![],
+            bonds: vec![],
+            flaws: vec![],
+            bg_choice: vec![],
+            default: bg.clone(),
+        }
+    }
+
     pub fn switch_skill_prof(&mut self, old: Skill, new: Skill) -> Result<(), CharBGError> {
         if self.skill_profs.0 == old {
             self.skill_profs = (new, self.skill_profs.1.clone());

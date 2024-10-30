@@ -12,8 +12,6 @@ pub struct Race {
     name: String,
     description: String,
     asi_type: RaceASI,
-    // covers "X Traits" things like age, alignmnent, size, and languages
-    traits: Option<Vec<String>>,
     // an internal racial choice, like a dragonborn's draconic heritage
     choice: Option<Vec<String>>,
     creature_size_choices: Vec<CreatureSize>,

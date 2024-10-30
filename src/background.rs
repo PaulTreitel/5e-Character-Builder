@@ -11,12 +11,7 @@ pub struct Background {
     lang_tool_profs: (ToolLangProf, ToolLangProf),
     gear: Vec<Equipment>,
     money: Money,
-    character_choices: BackgoundCharacterization,
-}
-
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
-pub struct BackgoundCharacterization {
-    personality: Vec<String>,
+    personality: Vec<String>, 
     ideals: Vec<String>,
     bonds: Vec<String>,
     flaws: Vec<String>,
@@ -31,7 +26,11 @@ impl Background {
         lang_tool_profs: (ToolLangProf, ToolLangProf),
         gear: Vec<Equipment>,
         money: Money,
-        character_choices: BackgoundCharacterization,
+        personality: Vec<String>, 
+        ideals: Vec<String>,
+        bonds: Vec<String>,
+        flaws: Vec<String>,
+        bg_choice: Option<Vec<String>>,
     ) -> Self {
         Background {
             name, 
@@ -40,19 +39,55 @@ impl Background {
             lang_tool_profs,
             gear, 
             money,
-            character_choices
+            personality,
+            ideals,
+            bonds,
+            flaws,
+            bg_choice,
         }
     }
-}
 
-impl BackgoundCharacterization {
-    pub fn new(
-        personality: Vec<String>, 
-        ideals: Vec<String>,
-        bonds: Vec<String>,
-        flaws: Vec<String>,
-        bg_choice: Option<Vec<String>>,
-    ) -> Self {
-        BackgoundCharacterization { personality, ideals, bonds, flaws, bg_choice }
+    pub fn name(&self) -> &str {
+        &self.name
+    }
+
+    pub fn desc(&self) -> &str {
+        &self.description
+    }
+
+    pub fn skills(&self) -> &(Skill, Skill) {
+        &self.skill_profs
+    }
+
+    pub fn tools_and_langs(&self) -> &(ToolLangProf, ToolLangProf) {
+        &self.lang_tool_profs
+    }
+
+    pub fn gear(&self) -> &Vec<Equipment> {
+        &self.gear
+    }
+
+    pub fn money(&self) -> &Money {
+        &self.money
+    }
+
+    pub fn personality(&self) -> &Vec<String> {
+        &self.personality
+    }
+    
+    pub fn ideals(&self) -> &Vec<String> {
+        &self.ideals
+    }
+
+    pub fn bonds(&self) -> &Vec<String> {
+        &self.bonds
+    }
+
+    pub fn flaws(&self) -> &Vec<String> {
+        &self.flaws
+    }
+
+    pub fn background_choice(&self) -> &Option<Vec<String>> {
+        &self.bg_choice
     }
 }

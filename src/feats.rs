@@ -44,16 +44,16 @@ mod feats {
             self.effects.as_mut().unwrap().push(e);
         }
 
-        pub fn effects(self) -> Option<Vec<FeatEffect>> {
-            self.effects.clone()
+        pub fn effects(&self) -> &Option<Vec<FeatEffect>> {
+            &self.effects
         }
 
-        pub fn name(self) -> String {
-            self.name
+        pub fn name(&self) -> &str {
+            &self.name
         }
 
-        pub fn description(self) -> String {
-            self.description
+        pub fn description(&self) -> &str {
+            &self.description
         }
     }
 }

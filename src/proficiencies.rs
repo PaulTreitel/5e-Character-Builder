@@ -2,13 +2,13 @@ use serde::{Deserialize, Serialize};
 
 use crate::basic::{Skill, Stat};
 
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub enum LanguageProf {
     Choice,
     Lang{name: String},
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub enum ToolProf {
     InstrumentChoice,
     Instrument{name: String},
@@ -27,7 +27,7 @@ pub enum ToolProf {
     Custom{name: String},
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub enum ArmorProf {
     Light,
     Medium,
@@ -36,7 +36,7 @@ pub enum ArmorProf {
     Specific{name: String},
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub enum WeaponProf {
     SimpleMelee,
     SimpleRanged,
@@ -54,20 +54,19 @@ pub enum ToolLangProf {
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub enum Proficiency {
-    Tool(ToolProf),
-    ToolExpertise(ToolProf),
-    ToolHalfProf(ToolProf),
+    Tool(ToolProf, ProficiencyLevel),
     Lang(LanguageProf),
     Weapon(WeaponProf),
     Armor(ArmorProf),
     Save(Stat),
-    Skill(Skill),
-    SkillExpertise(Skill),
-    SkillHalfProf(Skill),
+    Skill(Skill, ProficiencyLevel),
+    Initiative(ProficiencyLevel),
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize, Default)]
 pub enum ProficiencyLevel {
+    #[default]
+    None,
     Half,
     Full,
     Expertise,

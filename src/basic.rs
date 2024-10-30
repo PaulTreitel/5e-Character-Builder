@@ -13,7 +13,7 @@ pub enum DieSize {
     DPercentile,
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub enum Skill {
     Acrobatics, 
     AnimalHandling, 
@@ -44,7 +44,7 @@ pub enum AttackType {
     RangedSpell,
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub enum Stat {
     Strength,
     Dexterity,

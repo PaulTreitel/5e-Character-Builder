@@ -6,6 +6,8 @@ use crate::{
     proficiencies::Proficiency
 };
 
+use super::Feat;
+
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub enum FeatEffect {
     IncreaseStat{ options: Vec<Stat>, by: u8, max: u8 },
@@ -30,6 +32,7 @@ pub enum FeatEffect {
     // This will require a developed system of actions and their activations/effects.
     GrantAction{ time: ActivationTime, action_desc: String },
     Choice(Vec<String>),
+    GrantFeat(Option<Feat>),
     // TODO represent more things
 }
 
