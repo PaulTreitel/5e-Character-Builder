@@ -1,13 +1,13 @@
 use serde::{Deserialize, Serialize};
     
 use crate::{
-    basic::{Skill, Stat},
-    proficiencies::{ArmorProf, LanguageProf, Proficiency, ProficiencyLevel, ToolProf, WeaponProf}
+    basic::Stat,
+    proficiencies::{ArmorProf, LanguageProf, Proficiency, ProficiencyLevel, SkillProf, ToolProf, WeaponProf}
 };
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, Default)]
 pub struct CharProficiencies {
-    skills: Vec<(Skill, ProficiencyLevel)>,
+    skills: Vec<(SkillProf, ProficiencyLevel)>,
     saves: Vec<Stat>,
     armor: Vec<ArmorProf>,
     weapons: Vec<WeaponProf>,

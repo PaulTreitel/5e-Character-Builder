@@ -2,9 +2,9 @@
 use serde::{Serialize, Deserialize};
 
 use crate::{
-    basic::{Condition, DamageResistImmune, Skill, Stat}, 
+    basic::{Condition, DamageResistImmune, Stat}, 
     character::char_attributes::{AbilityScores, Alignment, CreatureSize, CreatureType, Sense, Speeds}, 
-    proficiencies::LanguageProf
+    proficiencies::{LanguageProf, SkillProf}
 };
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -22,7 +22,7 @@ pub struct MonsterBase {
     challenge_rating: f32,
     prof_bonus: u8,
     saving_throw_profs: Vec<Stat>,
-    skill_profs: Vec<Skill>,
+    skill_profs: Vec<SkillProf>,
     dmg_resistances: Vec<DamageResistImmune>,
     dmg_vulnerabilities: Vec<DamageResistImmune>,
     dmg_immunities: Vec<DamageResistImmune>,

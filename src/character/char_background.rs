@@ -1,12 +1,12 @@
-use crate::{background::Background, basic::Skill};
-use crate::proficiencies::ToolLangProf;
+use crate::background::Background;
+use crate::proficiencies::{SkillProf, ToolLangProf};
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, Default)]
 pub struct CharBackground {
     name: String,
     description: String,
-    skill_profs: (Skill, Skill),
+    skill_profs: (SkillProf, SkillProf),
     tool_lang_profs: (ToolLangProf, ToolLangProf),
     personality: Vec<String>,
     ideals: Vec<String>,
@@ -38,7 +38,7 @@ impl CharBackground {
         }
     }
 
-    pub fn switch_skill_prof(&mut self, old: Skill, new: Skill) -> Result<(), CharBGError> {
+    pub fn switch_skill_prof(&mut self, old: SkillProf, new: SkillProf) -> Result<(), CharBGError> {
         if self.skill_profs.0 == old {
             self.skill_profs = (new, self.skill_profs.1.clone());
             Ok(())

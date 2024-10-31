@@ -1,13 +1,12 @@
 use crate::inventory::{equipment::Equipment, money::Money};
-use crate::basic::Skill;
-use crate::proficiencies::ToolLangProf;
+use crate::proficiencies::{SkillProf, ToolLangProf};
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, Default)]
 pub struct Background {
     name: String,
     description: String,
-    skill_profs: (Skill, Skill),
+    skill_profs: (SkillProf, SkillProf),
     lang_tool_profs: (ToolLangProf, ToolLangProf),
     gear: Vec<Equipment>,
     money: Money,
@@ -22,7 +21,7 @@ impl Background {
     pub fn new(
         name: String,
         description: String,
-        skills: (Skill, Skill),
+        skills: (SkillProf, SkillProf),
         lang_tool_profs: (ToolLangProf, ToolLangProf),
         gear: Vec<Equipment>,
         money: Money,
@@ -55,7 +54,7 @@ impl Background {
         &self.description
     }
 
-    pub fn skills(&self) -> &(Skill, Skill) {
+    pub fn skills(&self) -> &(SkillProf, SkillProf) {
         &self.skill_profs
     }
 

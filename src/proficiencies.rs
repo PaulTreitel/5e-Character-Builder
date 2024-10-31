@@ -8,6 +8,13 @@ pub enum LanguageProf {
     Lang{name: String},
 }
 
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize, Default)]
+pub enum SkillProf {
+    #[default]
+    Choice,
+    Skill(Skill),
+}
+
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub enum ToolProf {
     InstrumentChoice,
@@ -59,7 +66,7 @@ pub enum Proficiency {
     Weapon(WeaponProf),
     Armor(ArmorProf),
     Save(Stat),
-    Skill(Skill, ProficiencyLevel),
+    Skill(SkillProf, ProficiencyLevel),
     Initiative(ProficiencyLevel),
 }
 
