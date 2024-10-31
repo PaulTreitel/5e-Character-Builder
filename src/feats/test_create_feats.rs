@@ -13,7 +13,7 @@ pub fn make_feats() -> () {
             "Alert".to_string(), 
             alert_desc.to_string(), 
             None, 
-            Some(alert_effects)
+            alert_effects
         );
 
         // should athlete have an effect for standing up with 5ft?
@@ -24,7 +24,7 @@ pub fn make_feats() -> () {
             "Athlete".to_string(), 
             athlete_desc.to_string(), 
             None, 
-            Some(athlete_effects)
+            athlete_effects
         );
         
         let actor_desc = "Skilled at mimicry and dramatics, you gain the following benefits:\n• Increase your Charisma score by 1, to a maximum of 20.\n• You have advantage on Charisma (Deception) and Charisma (Performance) checks when trying to pass yourself off as a different person.\n• You can mimic the speech of another person or the sounds made by other creatures. You must have heard the person speaking, or heard the creature make the sound, for at least 1 minute. A successful Wisdom (Insight) check contested by your Charisma (Deception) check allows a listener to determine that the effect is faked.";
@@ -43,7 +43,7 @@ pub fn make_feats() -> () {
             "Actor".to_string(), 
             actor_desc.to_string(), 
             None, 
-            Some(actor_effects)
+            actor_effects
         );
 
         let charger_desc = "When you use your action to Dash, you can use a bonus action to make one melee weapon attack or to shove a creature.\n\tIf you move at least 10 feet in a straight line immediately before taking this bonus action, you either gain a +5 bonus to the attack’s damage roll (if you chose to make a melee attack and hit) or push the target up to 10 feet away from you (if you chose to shove and you succeed).";
@@ -56,7 +56,7 @@ pub fn make_feats() -> () {
             "Charger".to_string(), 
             charger_desc.to_string(), 
             None, 
-            Some(charger_effects)
+            charger_effects
         );
 
         let cbe_desc = "Thanks to extensive practice with the crossbow, you gain the following benefits:\n• You ignore the loading quality of crossbows with which you are proficient.\n• Being within 5 feet of a hostile creature doesn’t impose disadvantage on your ranged attack rolls.\n• When you use the Attack action and attack with a one-handed weapon , you can use a bonus action to attack with a loaded hand crossbow you are holding.";
@@ -71,7 +71,7 @@ pub fn make_feats() -> () {
             "Crossbow Expert".to_string(), 
             cbe_desc.to_string(), 
             None, 
-            Some(cbe_effects)
+            cbe_effects
         );
 
         let defensive_duelist_desc = "When you are wielding a finesse weapon with which you are proficient and another creature hits you with a melee attack, you can use your reaction to add your proficiency bonus to your AC for that attack, potentially causing the attack to miss you.";
@@ -83,8 +83,8 @@ pub fn make_feats() -> () {
         let _defensive_duelist = Feat::new(
             "Defensive Duelist".to_string(),
             defensive_duelist_desc.to_string(),
-            Some(feats::FeatPrereq::MinStat { s: vec![(Stat::Dexterity, 13)], stat_logical_or: false }),
-            Some(defensive_duelist_effects)
+            Some(feats::FeatPrereq::MinStat { s: vec![(Stat::Dexterity, 13)], logical_or: false }),
+            defensive_duelist_effects
         );
 
         // TODO Dual Wielder
@@ -106,7 +106,7 @@ pub fn make_feats() -> () {
             "Dungeon Delver".to_string(),
             dungeon_delver_desc.to_string(),
             None,
-            Some(dungeon_delver_effects)
+            dungeon_delver_effects
         );
 
         let durable_desc = "Hardy and resilient, you gain the follow in g benefits:\n• Increase your Constitution score by 1, to a maximum of 20.\n• When you roll a Hit Die to regain hit points, the minimum number of hit points you regain from the roll equals twice your Constitution modifier (minimum of 2).";
@@ -117,7 +117,7 @@ pub fn make_feats() -> () {
             "Durable".to_string(),
             durable_desc.to_string(),
             None,
-            Some(durable_effects)
+            durable_effects
         );
 
         let elemental_adept_desc = "When you gain this feat, choose one of the following damage types: acid, cold, fire, lightning, or thunder. Spells you cast ignore resistance to damage of the chosen type. In addition, when you roll damage for a spell you cast that deals dam age of that type, you can treat any 1 on a damage die as a 2. You can select this feat multiple times. Each time you do so, you must choose a different damage type.";
@@ -134,7 +134,7 @@ pub fn make_feats() -> () {
             "Elemental Adept".to_string(), 
             elemental_adept_desc.to_string(),
             Some(feats::FeatPrereq::CastASpell),
-            Some(elemental_adept_effects)
+            elemental_adept_effects
         );
 
         let grappler_desc = "You’ve developed the skills necessary to hold your own in close-quarters grappling. You gain the following benefits:\n• You have advantage on attack rolls against a creature you are grappling.\n• You can use your action to try to pin a creature grappled by you. To do so, make another grapple check. If you succeed , you and the creature are both restrained until the grapple ends.\n• Creatures that are one size larger than you don’t automatically succeed on checks to escape your grapple.";
@@ -148,8 +148,8 @@ pub fn make_feats() -> () {
         let _grappler = Feat::new(
             "Grappler".to_string(), 
             grappler_desc.to_string(), 
-            Some(feats::FeatPrereq::MinStat { s: vec![(Stat::Strength, 13)], stat_logical_or: false }), 
-            Some(grappler_effects)
+            Some(feats::FeatPrereq::MinStat { s: vec![(Stat::Strength, 13)], logical_or: false }), 
+            grappler_effects
         );
 
         let gwm_desc = "You’ve learned to put the weight of a weapon to your advantage, letting its momentumem power your strikes. You gain the following benefits:
@@ -166,6 +166,6 @@ pub fn make_feats() -> () {
             "Great Weapon Master".to_string(), 
             gwm_desc.to_string(), 
             None, 
-            Some(gwm_effects)
+            gwm_effects
         );
 }

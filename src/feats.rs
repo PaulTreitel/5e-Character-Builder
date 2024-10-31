@@ -12,13 +12,14 @@ pub struct Feat {
     name: String,
     description: String,
     prereq: Option<FeatPrereq>,
-    effects: Option<Vec<FeatEffect>>,
+    effects: Vec<FeatEffect>,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub enum FeatPrereq {
     Race(String),
-    MinStat{ s: Vec<(Stat, u8)>, stat_logical_or: bool },
+    // `logical_or` represents whether the minimum stats are X or Y vs X and Y.
+    MinStat{ s: Vec<(Stat, u8)>, logical_or: bool },
     Prof(ArmorProf),
     CastASpell,
 }
@@ -32,19 +33,16 @@ mod feats {
         pub fn new(
             name: String, description: String, 
             prereq: Option<FeatPrereq>, 
-            effects: Option<Vec<FeatEffect>>
+            effects: Vec<FeatEffect>
         ) -> Self {
             Feat { name, description, prereq, effects }
         }
 
         pub fn add_effect(&mut self, e: FeatEffect) -> () {
-            if self.effects == None {
-                self.effects = Some(Vec::new());
-            }
-            self.effects.as_mut().unwrap().push(e);
+            self.effects.push(e);
         }
 
-        pub fn effects(&self) -> &Option<Vec<FeatEffect>> {
+        pub fn effects(&self) -> &Vec<FeatEffect> {
             &self.effects
         }
 

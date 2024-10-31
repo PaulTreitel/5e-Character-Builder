@@ -16,7 +16,7 @@ pub struct Weapon {
     req_attunement: bool,
     base_dmg_die: DieSize,
     base_dmg_type: DamageType,
-    extra_dmg: Option<Vec<(DieSize, DamageType)>>,
+    extra_dmg: Vec<(DieSize, DamageType)>,
     category: WeaponProf,
     silvered: bool,
     adamantine: bool,

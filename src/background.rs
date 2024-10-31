@@ -15,7 +15,7 @@ pub struct Background {
     ideals: Vec<String>,
     bonds: Vec<String>,
     flaws: Vec<String>,
-    bg_choice: Option<Vec<String>>,
+    bg_choice: Vec<String>,
 }
 
 impl Background {
@@ -30,7 +30,7 @@ impl Background {
         ideals: Vec<String>,
         bonds: Vec<String>,
         flaws: Vec<String>,
-        bg_choice: Option<Vec<String>>,
+        bg_choice: Vec<String>,
     ) -> Self {
         Background {
             name, 
@@ -87,7 +87,7 @@ impl Background {
         &self.flaws
     }
 
-    pub fn background_choice(&self) -> &Option<Vec<String>> {
+    pub fn background_choice(&self) -> &Vec<String> {
         &self.bg_choice
     }
 }

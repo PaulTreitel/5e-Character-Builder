@@ -1,5 +1,3 @@
-use std::default;
-
 use serde::{Serialize, Deserialize};
 
 use crate::{
@@ -15,13 +13,13 @@ pub struct Race {
     description: String,
     asi_type: RaceASI,
     // an internal racial choice, like a dragonborn's draconic heritage
-    choice: Option<Vec<String>>,
+    choice: Vec<String>,
     creature_size_choices: Vec<CreatureSize>,
     creature_type: CreatureType,
     speeds: Speeds,
     lamguages: Vec<LanguageProf>,
     abilities: Vec<RacialAbility>,
-    subraces: Option<Vec<SubRace>>,
+    subraces: Vec<SubRace>,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, Default)]
