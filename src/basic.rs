@@ -1,21 +1,21 @@
 use serde::{self, Deserialize, Serialize};
 
-use std::{default, fmt};
+use std::fmt;
 
-#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize, Default)]
 pub enum DieSize {
     D4,
     D6,
     D8,
     D10,
     D12,
+    #[default]
     D20,
     DPercentile,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize, Default)]
 pub enum Skill {
-    // Acrobatics is default just by alphabetization
     #[default]
     Acrobatics, 
     AnimalHandling, 
