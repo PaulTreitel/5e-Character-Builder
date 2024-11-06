@@ -1,6 +1,15 @@
 use crate::{background::Background, class::Class, inventory::Inventory, race::Race};
 
-use super::{char_attributes::{AbilityScores, Alignment, CreatureSize, CreatureType, Sense, Speeds}, char_background::CharBackground, char_class::CharClass, char_proficiencies::CharProficiencies, defenses::Defenses, health::CharHealth, Character};
+use super::{
+    char_attributes::{AbilityScores, Alignment, CreatureSize, CreatureType, Sense, Speeds}, 
+    char_background::CharBackground, 
+    char_class::CharClass, 
+    char_description::CharDescription, 
+    char_proficiencies::CharProficiencies, 
+    defenses::Defenses, 
+    health::CharHealth, 
+    Character
+};
 
 impl Character {
     pub fn with_name(mut self, name: &str) -> Self {
@@ -92,6 +101,16 @@ impl Character {
 
     pub fn with_defenses(mut self, d: Defenses) -> Self {
         self.defenses = d;
+        self
+    }
+
+    pub fn with_description(mut self, d: CharDescription) -> Self {
+        self.description = d;
+        self
+    }
+
+    pub fn with_notes(mut self, notes: String) -> Self {
+        self.notes = notes;
         self
     }
 }

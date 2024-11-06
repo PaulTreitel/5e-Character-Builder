@@ -1,6 +1,7 @@
 pub mod char_attributes;
-mod char_background;
 pub mod char_class;
+pub mod char_description;
+mod char_background;
 mod char_proficiencies;
 mod health;
 mod recompute;
@@ -11,6 +12,7 @@ use crate::{inventory::Inventory, race::Race};
 use char_attributes::{AbilityScores, Alignment, CreatureSize, CreatureType, Sense, Speeds};
 use char_background::CharBackground;
 use char_class::CharClass;
+use char_description::CharDescription;
 use char_proficiencies::CharProficiencies;
 use defenses::Defenses;
 use health::CharHealth;
@@ -38,8 +40,9 @@ pub struct Character {
     inspiration: bool,
     pub health: CharHealth,
     pub defenses: Defenses,
-    // TODO physical_description
-    // TODO
+    pub description: CharDescription,
+    notes: String,
+    // For each new field, add a `with_x()` function to builder.rs and a getter below.
 }
 
 pub enum CharacterError {
@@ -52,7 +55,7 @@ mod character {
     };
 
     use super::{
-        char_attributes::{AbilityScores, Alignment, CreatureSize, CreatureType, Sense, Speed, Speeds}, 
+        char_attributes::{Alignment, CreatureSize, CreatureType, Sense, Speed, Speeds}, 
         char_background::CharBackground, 
         char_class::CharClass, 
         char_proficiencies::CharProficiencies, 
@@ -134,6 +137,10 @@ mod character {
 
         pub fn has_inspiration(&self) -> bool {
             self.inspiration
+        }
+
+        pub fn notes(&self) -> &str {
+            &self.notes
         }
 
         pub fn pb(&self) -> u8 {

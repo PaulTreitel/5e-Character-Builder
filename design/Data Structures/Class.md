@@ -1,7 +1,7 @@
 ![[Collections#Classes]]
 
 
-## Starting Equipment
+# Starting Equipment
 
 #### Artificer
 - **Choice:** weapon (two simple weapons)
@@ -78,3 +78,20 @@
 - **Choice:** equipment (component pouch or arcane focus)
 - **Choice:** pack (scholar's or explorer's)
 - **Guaranteed:** spellbook
+
+### General Types
+- Guaranteed items: just a list of gear, possibly including weapons, armor and packs
+- Weapon(/equipment): option between several weapons, including specific weapons and classes of weapons. For ranged weapons this can include regular equipment ammunition. Some choices may grant multiple weapons (e.g., two handaxes). Some of them can be proficiency-locked based on subclass-granted proficiencies.
+- Packs: choice between starter packs
+- Armor: choice between different sets of armor. Some of them can be proficiency-locked based on subclass-granted proficiencies
+- Weapon/equipment/armor: choice between armor or armor, weapon, and ammunition (fighter)
+- Weapon/armor: weapon choices, one of which features a shield
+
+# Class Choices
+
+A class or subclass can have its own category of choices, such as Warlock Invocations, fighting styles, battle master maneuvers, and the like. There should be a way to store these so they can appear in different places (different class feature options, class-based feats, the ability to select options from another subclass's category, etc) in a write-once use-multiple manner.
+
+# Special Class Sheet Operations
+
+* allow you to attune to more items than normal
+* allow you to ignore class requirements when attuning to items
