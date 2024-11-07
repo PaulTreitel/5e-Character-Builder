@@ -4,7 +4,7 @@ use crate::proficiencies::ArmorProf;
 
 use super::inventory::{Item, ItemRarity};
 
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub struct Armor {
     name: String,
     description: String,
@@ -18,7 +18,7 @@ pub struct Armor {
     // TODO anything else to represent?
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 enum ArmorType {
     Shield,
     Armor{base: u8, dex_cap: Option<u8>, str_req: Option<u8>, stealth_dadv: bool}

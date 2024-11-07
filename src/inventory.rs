@@ -19,6 +19,8 @@ pub struct Inventory {
 
 mod inventory {
 
+    use std::default;
+
     use serde::{Deserialize, Serialize};
 
     use super::{
@@ -29,8 +31,9 @@ mod inventory {
         weapon::Weapon
     };
 
-    #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize, Default)]
     pub enum ItemRarity {
+        #[default]
         Common,
         Uncommon,
         Rare,
@@ -39,14 +42,14 @@ mod inventory {
         Artifact,
     }
 
-    #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
     pub enum Equippable {
         Unequippable,
         Unequipped,
         Equipped,
     }
 
-    #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+    #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
     pub enum ItemType {
         BasicGear(Equipment),
         Pack(EquipmentPack),

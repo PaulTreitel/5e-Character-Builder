@@ -6,7 +6,7 @@ use super::inventory::{Item, ItemRarity};
 
 
 
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub struct Weapon {
     name: String,
     description: String,
@@ -25,7 +25,7 @@ pub struct Weapon {
     // TODO anything else to represent?
 }
 
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize)]
 pub enum WeaponProperty {
     Ammunition,
     Finesse,
